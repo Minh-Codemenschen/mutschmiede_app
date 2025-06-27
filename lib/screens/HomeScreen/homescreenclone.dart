@@ -236,187 +236,121 @@ class _HomeScreenCloneState extends State<HomeScreenClone> {
                                             crossAxisCount: 2),
                                     itemCount: listfetchUserList.length,
                                     itemBuilder: (BuildContext ctx, index) {
+                                      double screenWidth = MediaQuery.of(context).size.width;
+                                      double avatarRadius = screenWidth * 0.13;
+                                      double avatarOuterRadius = screenWidth * 0.20;
+                                      double iconSize = screenWidth * 0.07; // icon mp3, language
+                                      double fontSizeName = screenWidth * 0.028;
+                                      double fontSizeInfo = screenWidth * 0.032;
+                                      double rowHeight = iconSize + 8;
+                                      double borderWidth = screenWidth * 0.012;
                                       return Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          children: [
-                                            const SizedBox(
-                                              height: 4,
-                                            ),
-                                            InkWell(
-                                              onTap: () {
-                                                Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        ProfileScreen(
-                                                            listfetchUserList[
-                                                                index]),
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        children: [
+                                          SizedBox(height: screenWidth * 0.01),
+                                          InkWell(
+                                            onTap: () {
+                                              Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                  builder: (context) => ProfileScreen(listfetchUserList[index]),
+                                                ),
+                                              );
+                                            },
+                                            child: (listfetchUserList[index].status! != null && listfetchUserList[index].status! == "1")
+                                                ? Container(
+                                                    width: avatarOuterRadius * 2,
+                                                    height: avatarOuterRadius * 2,
+                                                    decoration: BoxDecoration(
+                                                      shape: BoxShape.circle,
+                                                      border: Border.all(
+                                                        color: Colors.green.shade300,
+                                                        width: borderWidth,
+                                                      ),
+                                                    ),
+                                                    child: CircleAvatar(
+                                                      radius: avatarOuterRadius - borderWidth,
+                                                      backgroundImage: NetworkImage(listfetchUserList[index].avatar!),
+                                                    ),
+                                                  )
+                                                : CircleAvatar(
+                                                    radius: avatarOuterRadius - 2,
+                                                    backgroundImage: NetworkImage(listfetchUserList[index].avatar!),
                                                   ),
-                                                );
-                                              },
-                                              child: /*CircleAvatar(
-                                          radius: size.width * 0.16,
-                                          backgroundColor:
-                                              Colors.green.shade300,
-                                          child: CircleAvatar(
-                                            radius: size.width * 0.13,
-                                            backgroundImage: NetworkImage(
-                                              listfetchUserList[index].avatar!,
+                                          ),
+                                          SizedBox(height: screenWidth * 0.008),
+                                          Text(
+                                            "${listfetchUserList[index].displayName}",
+                                            maxLines: 1,
+                                            overflow: TextOverflow.ellipsis,
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              color: Colors.black,
+                                              fontFamily: 'Raleway',
+                                              fontWeight: FontWeight.w600,
+                                              fontSize: fontSizeName,
                                             ),
                                           ),
-                                        ),*/
-                                                  (listfetchUserList[index]
-                                                                  .status! !=
-                                                              null &&
-                                                          listfetchUserList[
-                                                                      index]
-                                                                  .status! ==
-                                                              "1")
-                                                      ? CircleAvatar(
-                                                          radius:
-                                                              size.width * 0.26,
-                                                          backgroundColor:
-                                                              Colors.green
-                                                                  .shade300,
-                                                          child: CircleAvatar(
-                                                            radius: size.width *
-                                                                0.21,
-                                                            backgroundImage:
-                                                                NetworkImage(
-                                                              listfetchUserList[
-                                                                      index]
-                                                                  .avatar!,
-                                                            ),
-                                                          ),
-                                                        )
-                                                      : CircleAvatar(
-                                                          radius:
-                                                              size.width * 0.25,
-                                                          backgroundImage:
-                                                              NetworkImage(
-                                                            listfetchUserList[
-                                                                    index]
-                                                                .avatar!,
-                                                          ),
-                                                        ),
-                                            ),
-                                            const SizedBox(
-                                              height: 03,
-                                            ),
-                                            Text(
-                                              maxLines: 1,
-                                              "${listfetchUserList[index].displayName}",
-                                              textAlign: TextAlign.center,
-                                              style: const TextStyle(
-                                                color: Colors.black,
-                                                fontFamily: 'Raleway',
-                                                fontWeight: FontWeight.w600,
-                                                fontSize: 11,
-                                              ),
-                                            ),
-                                            Text(
+                                          FittedBox(
+                                            fit: BoxFit.scaleDown,
+                                            child: Text(
                                               "${listfetchUserList[index].ort}, ${listfetchUserList[index].language?.toUpperCase()}",
                                               textAlign: TextAlign.center,
-                                              maxLines: 2,
-                                              style: const TextStyle(
+                                              maxLines: 1,
+                                              softWrap: false,
+                                              style: TextStyle(
                                                 color: Colors.black,
                                                 fontFamily: 'Raleway',
                                                 fontWeight: FontWeight.w400,
-                                                fontSize: 10,
+                                                fontSize: fontSizeInfo,
                                               ),
                                             ),
-                                            Flexible(
-                                                child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
+                                          ),
+                                          SizedBox(height: screenWidth * 0.015),
+                                          SizedBox(
+                                            height: rowHeight,
+                                            child: Row(
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              crossAxisAlignment: CrossAxisAlignment.center,
                                               children: [
-                                                (listfetchUserList[index].mp3 ==
-                                                            null ||
-                                                        listfetchUserList[index]
-                                                                .mp3 ==
-                                                            "null")
-                                                    ? Image.asset(
-                                                        AppImages.icn_disable,
-                                                        height: 25,
-                                                        width: 25,
-                                                      )
-                                                    : (indexSeleted != null &&
-                                                            indexSeleted ==
-                                                                index)
-                                                        ? InkWell(
-                                                            onTap: () {
-                                                              indexSeleted =
-                                                                  null;
-                                                              _init(
-                                                                  "${listfetchUserList[index].mp3}",
-                                                                  false);
-                                                              setState(() {});
-                                                            },
-                                                            child: Image.asset(
-                                                              AppImages
-                                                                  .icn_pause,
-                                                              height: 25,
-                                                              width: 25,
+                                                SizedBox(
+                                                  width: iconSize,
+                                                  height: iconSize,
+                                                  child: (listfetchUserList[index].mp3 == null ||
+                                                          listfetchUserList[index].mp3 == "null")
+                                                      ? Image.asset(AppImages.icn_disable)
+                                                      : (indexSeleted != null && indexSeleted == index)
+                                                          ? InkWell(
+                                                              onTap: () {
+                                                                indexSeleted = null;
+                                                                _init("${listfetchUserList[index].mp3}", false);
+                                                                setState(() {});
+                                                              },
+                                                              child: Image.asset(AppImages.icn_pause),
+                                                            )
+                                                          : InkWell(
+                                                              onTap: () {
+                                                                indexSeleted = index;
+                                                                _init("${listfetchUserList[index].mp3}", true);
+                                                                setState(() {});
+                                                              },
+                                                              child: Image.asset(AppImages.icn_play),
                                                             ),
-                                                          )
-                                                        : InkWell(
-                                                            onTap: () {
-                                                              indexSeleted =
-                                                                  index;
-                                                              _init(
-                                                                  "${listfetchUserList[index].mp3}",
-                                                                  true);
-                                                              setState(() {});
-                                                            },
-                                                            child: Image.asset(
-                                                              AppImages
-                                                                  .icn_play,
-                                                              height: 25,
-                                                              width: 25,
-                                                            ),
-                                                          ),
-                                                Align(
-                                                    alignment:
-                                                        Alignment.topCenter,
-                                                    child: ListView.builder(
-                                                        itemBuilder:
-                                                            (ctx, ind) {
-                                                          return Padding(
-                                                              padding:
-                                                                  const EdgeInsets
-                                                                      .only(
-                                                                      left: 2,
-                                                                      right: 2),
-                                                              child: SizedBox(
-                                                                  height: 25,
-                                                                  width: 25,
-                                                                  child: Image.network(
-                                                                      listfetchUserList[index]
-                                                                              .urlIconLanguage![
-                                                                          ind])));
-                                                        },
-                                                        itemCount: listfetchUserList[
-                                                                        index]
-                                                                    .urlIconLanguage !=
-                                                                null
-                                                            ? listfetchUserList[
-                                                                            index]
-                                                                        .urlIconLanguage!
-                                                                        .length >
-                                                                    2
-                                                                ? 2
-                                                                : listfetchUserList[
-                                                                        index]
-                                                                    .urlIconLanguage!
-                                                                    .length
-                                                            : 0,
-                                                        scrollDirection:
-                                                            Axis.horizontal,
-                                                        shrinkWrap: true)),
+                                                ),
+                                                SizedBox(width: screenWidth * 0.02),
+                                                ...?listfetchUserList[index].urlIconLanguage?.take(2).map((iconUrl) => Padding(
+                                                      padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.01),
+                                                      child: SizedBox(
+                                                        width: iconSize,
+                                                        height: iconSize,
+                                                        child: Image.network(iconUrl),
+                                                      ),
+                                                    )),
                                               ],
-                                            )),
-                                          ]);
+                                            ),
+                                          ),
+                                        ],
+                                      );
                                     })
                                 : const SizedBox(
                                     height: 200,
@@ -471,211 +405,130 @@ class _HomeScreenCloneState extends State<HomeScreenClone> {
                                                 crossAxisCount: 2),
                                         itemCount: listfetchUserList.length,
                                         itemBuilder: (BuildContext ctx, index) {
+                                          double screenWidth = MediaQuery.of(context).size.width;
+                                          double avatarRadius = screenWidth * 0.13;
+                                          double avatarOuterRadius = screenWidth * 0.16;
+                                          double iconSize = screenWidth * 0.09; // icon mp3, language
+                                          double fontSizeName = screenWidth * 0.028;
+                                          double fontSizeInfo = screenWidth * 0.032;
+                                          double rowHeight = iconSize + 8;
+                                          double borderWidth = screenWidth * 0.012;
                                           return Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.center,
-                                              children: [
-                                                const SizedBox(
-                                                  height: 4,
-                                                ),
-                                                InkWell(
-                                                  onTap: () {
-                                                    Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            ProfileScreen(
-                                                                listfetchUserList[
-                                                                    index]),
+                                            crossAxisAlignment: CrossAxisAlignment.center,
+                                            children: [
+                                              SizedBox(height: screenWidth * 0.01),
+                                              InkWell(
+                                                onTap: () {
+                                                  Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                      builder: (context) => ProfileScreen(listfetchUserList[index]),
+                                                    ),
+                                                  );
+                                                },
+                                                child: (listfetchUserList[index].status! != null && listfetchUserList[index].status! == "1")
+                                                    ? Container(
+                                                        width: avatarOuterRadius * 2,
+                                                        height: avatarOuterRadius * 2,
+                                                        decoration: BoxDecoration(
+                                                          shape: BoxShape.circle,
+                                                          border: Border.all(
+                                                            color: Colors.green.shade300,
+                                                            width: borderWidth,
+                                                          ),
+                                                        ),
+                                                        child: CircleAvatar(
+                                                          radius: avatarOuterRadius - borderWidth,
+                                                          backgroundImage: NetworkImage(listfetchUserList[index].avatar!),
+                                                        ),
+                                                      )
+                                                    : CircleAvatar(
+                                                        radius: avatarOuterRadius - 2,
+                                                        backgroundImage: NetworkImage(listfetchUserList[index].avatar!),
                                                       ),
-                                                    );
-                                                  },
-                                                  child: /*CircleAvatar(
-                                          radius: size.width * 0.16,
-                                          backgroundColor:
-                                              Colors.green.shade300,
-                                          child: CircleAvatar(
-                                            radius: size.width * 0.13,
-                                            backgroundImage: NetworkImage(
-                                              listfetchUserList[index].avatar!,
-                                            ),
-                                          ),
-                                        ),*/
-                                                      (listfetchUserList[index]
-                                                                      .status! !=
-                                                                  null &&
-                                                              listfetchUserList[
-                                                                          index]
-                                                                      .status! ==
-                                                                  "1")
-                                                          ? CircleAvatar(
-                                                              radius:
-                                                                  size.width *
-                                                                      0.26,
-                                                              backgroundColor:
-                                                                  Colors.green
-                                                                      .shade300,
-                                                              child:
-                                                                  CircleAvatar(
-                                                                radius:
-                                                                    size.width *
-                                                                        0.21,
-                                                                backgroundImage:
-                                                                    NetworkImage(
-                                                                  listfetchUserList[
-                                                                          index]
-                                                                      .avatar!,
-                                                                ),
-                                                              ),
-                                                            )
-                                                          : CircleAvatar(
-                                                              radius:
-                                                                  size.width *
-                                                                      0.25,
-                                                              backgroundImage:
-                                                                  NetworkImage(
-                                                                listfetchUserList[
-                                                                        index]
-                                                                    .avatar!,
-                                                              ),
-                                                            ),
+                                              ),
+                                              SizedBox(height: screenWidth * 0.008),
+                                              Text(
+                                                "${listfetchUserList[index].displayName}",
+                                                maxLines: 1,
+                                                overflow: TextOverflow.ellipsis,
+                                                textAlign: TextAlign.center,
+                                                style: TextStyle(
+                                                  color: Colors.black,
+                                                  fontFamily: 'Raleway',
+                                                  fontWeight: FontWeight.w600,
+                                                  fontSize: fontSizeName,
                                                 ),
-                                                const SizedBox(
-                                                  height: 03,
-                                                ),
-                                                Text(
-                                                  maxLines: 1,
-                                                  "${listfetchUserList[index].displayName}",
-                                                  textAlign: TextAlign.center,
-                                                  style: const TextStyle(
-                                                    color: Colors.black,
-                                                    fontFamily: 'Raleway',
-                                                    fontWeight: FontWeight.w600,
-                                                    fontSize: 11,
-                                                  ),
-                                                ),
-                                                Text(
+                                              ),
+                                              FittedBox(
+                                                fit: BoxFit.scaleDown,
+                                                child: Text(
                                                   "${listfetchUserList[index].ort}, ${listfetchUserList[index].language?.toUpperCase()}",
                                                   textAlign: TextAlign.center,
-                                                  maxLines: 2,
-                                                  style: const TextStyle(
+                                                  maxLines: 1,
+                                                  softWrap: false,
+                                                  style: TextStyle(
                                                     color: Colors.black,
                                                     fontFamily: 'Raleway',
                                                     fontWeight: FontWeight.w400,
-                                                    fontSize: 10,
+                                                    fontSize: fontSizeInfo,
                                                   ),
                                                 ),
-                                                Flexible(
-                                                    child: Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
+                                              ),
+                                              SizedBox(height: screenWidth * 0.015),
+                                              SizedBox(
+                                                height: rowHeight,
+                                                child: Row(
+                                                  mainAxisAlignment: MainAxisAlignment.center,
+                                                  crossAxisAlignment: CrossAxisAlignment.center,
                                                   children: [
-                                                    (listfetchUserList[index]
-                                                                    .mp3 ==
-                                                                null ||
-                                                            listfetchUserList[
-                                                                        index]
-                                                                    .mp3 ==
-                                                                "null")
-                                                        ? Image.asset(
-                                                            AppImages
-                                                                .icn_disable,
-                                                            height: 25,
-                                                            width: 25,
-                                                          )
-                                                        : (indexSeleted !=
-                                                                    null &&
-                                                                indexSeleted ==
-                                                                    index)
-                                                            ? InkWell(
-                                                                onTap: () {
-                                                                  indexSeleted =
-                                                                      null;
-                                                                  _init(
-                                                                      "${listfetchUserList[index].mp3}",
-                                                                      false);
-                                                                  setState(
-                                                                      () {});
-                                                                },
-                                                                child:
-                                                                    Image.asset(
-                                                                  AppImages
-                                                                      .icn_pause,
-                                                                  height: 25,
-                                                                  width: 25,
+                                                    SizedBox(
+                                                      width: iconSize,
+                                                      height: iconSize,
+                                                      child: (listfetchUserList[index].mp3 == null ||
+                                                              listfetchUserList[index].mp3 == "null")
+                                                          ? Image.asset(AppImages.icn_disable)
+                                                          : (indexSeleted != null && indexSeleted == index)
+                                                              ? InkWell(
+                                                                  onTap: () {
+                                                                    indexSeleted = null;
+                                                                    _init("${listfetchUserList[index].mp3}", false);
+                                                                    setState(() {});
+                                                                  },
+                                                                  child: Image.asset(AppImages.icn_pause),
+                                                                )
+                                                              : InkWell(
+                                                                  onTap: () {
+                                                                    indexSeleted = index;
+                                                                    _init("${listfetchUserList[index].mp3}", true);
+                                                                    setState(() {});
+                                                                  },
+                                                                  child: Image.asset(AppImages.icn_play),
                                                                 ),
-                                                              )
-                                                            : InkWell(
-                                                                onTap: () {
-                                                                  indexSeleted =
-                                                                      index;
-                                                                  _init(
-                                                                      "${listfetchUserList[index].mp3}",
-                                                                      true);
-                                                                  setState(
-                                                                      () {});
-                                                                },
-                                                                child:
-                                                                    Image.asset(
-                                                                  AppImages
-                                                                      .icn_play,
-                                                                  height: 25,
-                                                                  width: 25,
-                                                                ),
-                                                              ),
-                                                    Align(
-                                                        alignment:
-                                                            Alignment.topCenter,
-                                                        child: ListView.builder(
-                                                            itemBuilder:
-                                                                (ctx, ind) {
-                                                              return Padding(
-                                                                  padding:
-                                                                      const EdgeInsets
-                                                                          .only(
-                                                                          left:
-                                                                              2,
-                                                                          right:
-                                                                              2),
-                                                                  child: SizedBox(
-                                                                      height:
-                                                                          25,
-                                                                      width: 25,
-                                                                      child: Image.network(
-                                                                          listfetchUserList[index]
-                                                                              .urlIconLanguage![ind])));
-                                                            },
-                                                            itemCount: listfetchUserList[
-                                                                            index]
-                                                                        .urlIconLanguage !=
-                                                                    null
-                                                                ? listfetchUserList[index]
-                                                                            .urlIconLanguage!
-                                                                            .length >
-                                                                        2
-                                                                    ? 2
-                                                                    : listfetchUserList[
-                                                                            index]
-                                                                        .urlIconLanguage!
-                                                                        .length
-                                                                : 0,
-                                                            scrollDirection:
-                                                                Axis.horizontal,
-                                                            shrinkWrap: true)),
+                                                    ),
+                                                    SizedBox(width: screenWidth * 0.02),
+                                                    ...?listfetchUserList[index].urlIconLanguage?.take(2).map((iconUrl) => Padding(
+                                                          padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.01),
+                                                          child: SizedBox(
+                                                            width: iconSize,
+                                                            height: iconSize,
+                                                            child: Image.network(iconUrl),
+                                                          ),
+                                                        )),
                                                   ],
-                                                )),
-                                              ]);
+                                                ),
+                                              ),
+                                            ],
+                                          );
                                         })
                                     : const SizedBox(
                                         height: 200,
                                         width: double.infinity,
-                                        child: Center(
-                                          child: Text(
-                                            AppConstants.txt_Nocoach,
-                                            style: TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 20,
-                                            ),
+                                        child: Text(
+                                          AppConstants.txt_Nocoach,
+                                          style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 20,
                                           ),
                                         ),
                                       ),
@@ -1151,7 +1004,7 @@ class _HomeScreenCloneState extends State<HomeScreenClone> {
                                           image.replaceAll(
                                               RegExp(
                                                   '(?<=.\\|)[^@](?=[^@]*?[^@]@)'),
-                                              '/');
+                                                  '/');
                                           String descriptionText =
                                               "${fetchUserCategoryList[index].termTitle}";
                                           RegExp exp = RegExp(r"<[^>]*>",
