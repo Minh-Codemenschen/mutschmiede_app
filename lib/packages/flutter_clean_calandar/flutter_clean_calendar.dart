@@ -313,7 +313,7 @@ class _CalendarState extends State<Calendar> {
 
   TextStyle? configureDateStyle(monthStarted, monthEnded) {
     TextStyle? dateStyles;
-    final TextStyle? body1Style = Theme.of(context).textTheme.bodyText2;
+    final TextStyle? body1Style = Theme.of(context).textTheme.bodyMedium;
 
     if (isExpanded) {
       final TextStyle body1StyleDisabled = body1Style!.copyWith(
@@ -416,7 +416,7 @@ class _CalendarState extends State<Calendar> {
                                   Text(event.summary,
                                       style: Theme.of(context)
                                           .textTheme
-                                          .subtitle2),
+                                          .titleSmall),
                                   Text(event.description)
                                 ],
                               ),
@@ -433,11 +433,11 @@ class _CalendarState extends State<Calendar> {
                                   Text(start,
                                       style: Theme.of(context)
                                           .textTheme
-                                          .bodyText1),
+                                          .bodyLarge),
                                   Text(end,
                                       style: Theme.of(context)
                                           .textTheme
-                                          .bodyText1),
+                                          .bodyLarge),
                                 ],
                               ),
                             ),

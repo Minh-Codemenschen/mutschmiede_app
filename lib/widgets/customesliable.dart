@@ -15,7 +15,7 @@ class CustomeSliable extends StatelessWidget {
       required this.assetName,
       this.text,
       required this.subtitle1,
-      required this.subtitle2})
+      required this.titleSmall})
       : super(key: key);
   final VoidCallback? onPressed;
   final String? label;
@@ -23,7 +23,7 @@ class CustomeSliable extends StatelessWidget {
 
   final String subtitle;
   final String subtitle1;
-  final String subtitle2;
+  final String titleSmall;
   final String? assetName;
   final String? text;
 
@@ -75,7 +75,7 @@ class CustomeSliable extends StatelessWidget {
                           padding: const EdgeInsets.only(left: 15, bottom: 05),
                           alignment: Alignment.centerLeft,
                           child: Text(
-                            subtitle2,
+                            titleSmall,
                             style: AppTextStyle.commonTextStyle.copyWith(
                                 fontWeight: FontWeight.w400,
                                 color: AppColor.black87Color),
