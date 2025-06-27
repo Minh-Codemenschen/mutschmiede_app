@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "783227937920",
+    "project_id": "mutschimiede",
+    "storage_bucket": "mutschimiede.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:783227937920:android:4522e7e67053dec551f265",
+        "android_client_info": {
+          "package_name": "com.codemenschen.mutschmiede.mutschmiede"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9YgLjl5e5wZcfHyPFi0dJgdfa1fJI8Sk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
