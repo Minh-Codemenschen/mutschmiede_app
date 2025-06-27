@@ -7,7 +7,9 @@ import 'AppConstants.dart';
 final ThemeData appThemeData = ThemeData(
   primaryColor: AppColor.textColorGrey,
   scaffoldBackgroundColor: AppColor.black87Color,
-  backgroundColor: AppColor.textColorBlack,
+  colorScheme: ColorScheme.fromSwatch().copyWith(
+    background: AppColor.textColorBlack,
+  ),
   textSelectionTheme: TextSelectionThemeData(cursorColor: AppColors.appColors),
 );
 

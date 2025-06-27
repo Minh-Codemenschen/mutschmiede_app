@@ -574,10 +574,10 @@ class _MeinProfilState extends State<MeinProfil> {
   }
 
   void _openGallery(BuildContext context) async {
-    var pickedFile = await profileImagesPicker.getImage(
-      source: ImageSource.gallery,
-      imageQuality: 30,
-    );
+    var pickedFile = await profileImagesPicker.pickImage(
+    source: ImageSource.gallery,
+    imageQuality: 30,
+  );
     if (pickedFile != null) {
       _profileImage = File(pickedFile.path);
       // avatarUpdateApiCall(_profileImage!);

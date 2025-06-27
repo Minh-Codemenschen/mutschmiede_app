@@ -32,9 +32,9 @@ dependencies:
 
   cupertino_icons: ^1.0.2
   font_awesome_flutter: ^10.5.0
-  flutter_slidable: ^2.0.0
-  intl: ^0.17.0
-  dio: ^4.0.6
+  flutter_slidable: ^4.0.0
+  intl: ^0.20.2
+  dio: ^5.8.0+1
   get: ^4.6.6
   http: ^0.13.5
   shared_preferences: ^2.0.15
@@ -42,15 +42,15 @@ dependencies:
   cached_network_image: ^3.3.1
 
   flutter_html: ^3.0.0-beta.2
-  flutter_svg: ^0.22.0
+  flutter_svg: ^2.0.9
 
   url_launcher: ^6.1.0
-  image_picker: ^0.8.3+3
+  image_picker: ^1.1.2
   http_parser: ^4.0.2
   sticky_headers: ^0.3.0+2
   audio_service: ^0.18.9
-  audioplayers: ^3.0.1
-  just_audio: ^0.9.13
+  audioplayers: ^6.5.0
+  just_audio: ^0.10.4
   fluttertoast: ^8.1.3
   assets_audio_player: ^3.0.6
   path_provider: ^2.0.12
@@ -58,11 +58,12 @@ dependencies:
   appinio_video_player: ^1.2.1
   qr_code_scanner: ^1.0.1
   qr_flutter: ^4.1.0
-  firebase_core: ^2.24.2
+  firebase_core: ^3.14.0
   rflutter_alert: ^2.0.7
-  firebase_messaging: ^14.7.10
+  firebase_messaging: ^15.2.7
   package_info_plus: ^8.0.0
   version_check: ^0.2.0
+  video_player: ^2.7.2
 
 dev_dependencies:
   flutter_test:
@@ -73,7 +74,7 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^2.0.0
+  flutter_lints: ^6.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
