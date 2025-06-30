@@ -371,7 +371,7 @@ class LetzterCoachstate extends State<LetzterCoach> {
                             ),
                           ),
                           Text(
-                            "${listfetchUserList[index].ort},${listfetchUserList[index].language?.toUpperCase()}",
+                            "${listfetchUserList[index].ort},${listfetchUserList[index].language_choices?.toUpperCase()}",
                             textAlign: TextAlign.center,
                             maxLines: 2,
                             style: const TextStyle(

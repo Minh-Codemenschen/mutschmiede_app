@@ -10,6 +10,7 @@ class FetchUserList {
   String? profileStatus;
   String? status;
   String? language;
+  String? language_choices;
   List<String>? speakingLanguage;
   List<String>? urlIconLanguage;
   String? avatar;
@@ -29,6 +30,7 @@ class FetchUserList {
       this.phoneNumbnerDisplay,
       this.profileStatus,
       this.language,
+      this.language_choices,
       this.speakingLanguage,
       this.urlIconLanguage,
       this.avatar,
@@ -49,6 +51,7 @@ class FetchUserList {
     phoneNumbnerDisplay = json['phone_numbner_display'];
     profileStatus = json['profile_status'];
     language = json['language'];
+    language_choices = json['language_choices'];
     speakingLanguage = json['speaking_language'].cast<String>();
     urlIconLanguage = json['url_icon_language'].cast<String>();
     avatar = json['avatar'];
@@ -74,6 +77,7 @@ class FetchUserList {
     data['phone_numbner'] = phoneNumbner;
     data['profile_status'] = profileStatus;
     data['language'] = language;
+    data['language_choices'] = language_choices;
     data['speaking_language'] = speakingLanguage;
     data['url_icon_language'] = urlIconLanguage;
     data['tel_number_app'] = telNumberApp;

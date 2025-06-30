@@ -147,7 +147,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               Container(
                 alignment: Alignment.center,
                 child: Text(
-                    '${fetchUserList.ort},${fetchUserList.language?.toUpperCase()}',
+                    '${fetchUserList.ort},${fetchUserList.language_choices?.toUpperCase()}',
                     style: AppTextStyle.commonTextStyle),
               ),
               SizedBox(

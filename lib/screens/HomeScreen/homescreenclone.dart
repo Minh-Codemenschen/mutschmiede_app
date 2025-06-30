@@ -294,7 +294,7 @@ class _HomeScreenCloneState extends State<HomeScreenClone> {
                                           FittedBox(
                                             fit: BoxFit.scaleDown,
                                             child: Text(
-                                              "${listfetchUserList[index].ort}, ${listfetchUserList[index].language?.toUpperCase()}",
+                                              "${listfetchUserList[index].ort}, ${listfetchUserList[index].language_choices?.toUpperCase()}",
                                               textAlign: TextAlign.center,
                                               maxLines: 1,
                                               softWrap: false,
@@ -463,7 +463,7 @@ class _HomeScreenCloneState extends State<HomeScreenClone> {
                                               FittedBox(
                                                 fit: BoxFit.scaleDown,
                                                 child: Text(
-                                                  "${listfetchUserList[index].ort}, ${listfetchUserList[index].language?.toUpperCase()}",
+                                                  "${listfetchUserList[index].ort}, ${listfetchUserList[index].language_choices?.toUpperCase()}",
                                                   textAlign: TextAlign.center,
                                                   maxLines: 1,
                                                   softWrap: false,
@@ -659,7 +659,7 @@ class _HomeScreenCloneState extends State<HomeScreenClone> {
                                         ),
                                       ),
                                       Text(
-                                        "${UserDataFilterList[index].ort},${UserDataFilterList[index].language?.toUpperCase()}",
+                                        "${UserDataFilterList[index].ort},${UserDataFilterList[index].language_choices?.toUpperCase()}",
                                         textAlign: TextAlign.center,
                                         maxLines: 2,
                                         style: const TextStyle(
