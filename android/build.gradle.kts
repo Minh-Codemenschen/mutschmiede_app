@@ -1,3 +1,11 @@
+// Project-level build.gradle.kts
+
+buildscript {
+    dependencies {
+        classpath("com.google.gms:google-services:4.4.1") // 👈 thêm plugin này ở project-level
+    }
+}
+
 allprojects {
     repositories {
         google()
@@ -12,6 +20,7 @@ subprojects {
     val newSubprojectBuildDir: Directory = newBuildDir.dir(project.name)
     project.layout.buildDirectory.value(newSubprojectBuildDir)
 }
+
 subprojects {
     project.evaluationDependsOn(":app")
 }
