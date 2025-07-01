@@ -1,14 +1,36 @@
 workflows:
-  flutter-workflow:
-    name: Build app flutter
+  flutter-build:
+    name: Build Android and iOS
     max_build_duration: 60
     environment:
       flutter: stable
       xcode: latest
+      vars:
+        BUILD_NUMBER: 1
+
     scripts:
-      - name: Get dependencies
-        script: flutter pub get
-      - name: Build APK
-        script: flutter build apk --release
+      - name: Install dependencies
+        script: |
+          flutter pub get
+
+      - name: Build Android APK
+        script: |
+          flutter build apk --release --build-number=$BUILD_NUMBER
+
+      - name: Build Android App Bundle (.aab)
+        script: |
+          flutter build appbundle --release --build-number=$BUILD_NUMBER
+
+      - name: Build iOS
+        script: |
+          flutter build ios --release --no-codesign --build-number=$BUILD_NUMBER
+
     artifacts:
       - build/app/outputs/flutter-apk/app-release.apk
+      - build/app/outputs/bundle/release/app-release.aab
+      - build/ios/iphoneos/*.app
+
+    publishing:
+      email:
+        recipients:
+          - jptesting3@gmail.com

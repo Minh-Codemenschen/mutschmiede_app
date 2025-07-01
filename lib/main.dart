@@ -10,9 +10,7 @@ import 'dart:ui' as ui;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // if (!kIsWeb && (Platform.isAndroid || Platform.isIOS)) {
-  //   await Firebase.initializeApp();
-  // }
+  // await Firebase.initializeApp();
   runApp(const MyApp());
 }
 

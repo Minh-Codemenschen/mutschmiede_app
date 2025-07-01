@@ -1,6 +1,6 @@
 {
-    "name": "mutschmiede",
-    "short_name": "mutschmiede",
+    "name": "mutschmiede_app_new",
+    "short_name": "mutschmiede_app_new",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
